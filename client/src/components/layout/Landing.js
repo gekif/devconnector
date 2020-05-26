@@ -39,15 +39,12 @@ class Landing extends Component {
   }
 }
 
-
 Landing.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
-
 const mapStateToProps = state => ({
   auth: state.auth
 });
-
 
 export default connect(mapStateToProps)(Landing);

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 
-
 class Login extends Component {
   constructor() {
     super();
@@ -63,23 +62,22 @@ class Login extends Component {
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                    placeholder="Email Address"
-                    name="email"
-                    type="email"
-                    value={ this.state.email }
-                    onChange={ this.onChange }
-                    error={ errors.email }
+                  placeholder="Email Address"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
                 />
 
                 <TextFieldGroup
-                    placeholder="Password"
-                    name="password"
-                    type="password"
-                    value={ this.state.password }
-                    onChange={ this.onChange }
-                    error={ errors.password }
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
                 />
-
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
@@ -90,18 +88,15 @@ class Login extends Component {
   }
 }
 
-
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
-
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-
 
 export default connect(mapStateToProps, { loginUser })(Login);

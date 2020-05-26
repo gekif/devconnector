@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 
-
 class Register extends Component {
   constructor() {
     super();
@@ -13,7 +12,7 @@ class Register extends Component {
       name: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      password2: '',
       errors: {}
     };
 
@@ -44,7 +43,7 @@ class Register extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      password2: this.state.password2
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -64,40 +63,37 @@ class Register extends Component {
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                    placeholder="Name"
-                    name="name"
-                    value={ this.state.name }
-                    onChange={ this.onChange }
-                    error={ errors.name }
+                  placeholder="Name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={errors.name}
                 />
-
                 <TextFieldGroup
-                    placeholder="Email Address"
-                    name="email"
-                    type="email"
-                    value={ this.state.email }
-                    onChange={ this.onChange }
-                    error={ errors.email }
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
-
                 <TextFieldGroup
-                    placeholder="Password"
-                    name="password"
-                    type="password"
-                    value={ this.state.password }
-                    onChange={ this.onChange }
-                    error={ errors.password }
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
                 />
-
                 <TextFieldGroup
-                    placeholder="Confirm Password"
-                    name="confirmPassword"
-                    type="password"
-                    value={ this.state.confirmPassword }
-                    onChange={ this.onChange }
-                    error={ errors.confirmPassword }
+                  placeholder="Confirm Password"
+                  name="password2"
+                  type="password"
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                  error={errors.password2}
                 />
-
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
@@ -108,18 +104,15 @@ class Register extends Component {
   }
 }
 
-
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
-
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-
 
 export default connect(mapStateToProps, { registerUser })(withRouter(Register));
